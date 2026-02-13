@@ -1,29 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MoTheGoat7</title>
+  <title>MoTheGoat7 | Game Hub</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1a1a1a, #2b0a3d);
       color: white;
-      text-align: center;
+      overflow-x: hidden;
+      background: black;
     }
 
-    header {
-      padding: 40px;
-      font-size: 40px;
-      font-weight: bold;
+    /* Animated background */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 20% 30%, purple, transparent 40%),
+                  radial-gradient(circle at 80% 70%, blue, transparent 40%);
+      animation: moveBg 15s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveBg {
+      0% { transform: translate(0,0); }
+      50% { transform: translate(-25%, -25%); }
+      100% { transform: translate(0,0); }
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 40px;
+      background: rgba(0,0,0,0.7);
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    nav a:hover {
+      color: violet;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
     }
 
     .card {
       background: rgba(255,255,255,0.05);
-      margin: 40px auto;
-      padding: 30px;
+      padding: 20px;
+      margin: 20px auto;
       width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      border-radius: 12px;
       transition: 0.3s;
     }
 
@@ -32,33 +68,116 @@
     }
 
     button {
-      padding: 12px 25px;
-      font-size: 16px;
-      background: #8a2be2;
-      color: white;
+      padding: 10px 20px;
       border: none;
-      border-radius: 8px;
+      background: purple;
+      color: white;
+      border-radius: 6px;
       cursor: pointer;
     }
 
     button:hover {
-      background: #a855f7;
+      background: violet;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 60%;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid gray;
     }
   </style>
 </head>
 <body>
 
-  <header>MoTheGoat7 👑</header>
+  <nav>
+    <div><b>MoTheGoat7 👑</b></div>
+    <div>
+      <a href="#games">Games</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#login">Login</a>
+    </div>
+  </nav>
 
-  <div class="card">
-    <p id="text">Welcome to my website.</p>
-    <button onclick="changeText()">Click Me</button>
-  </div>
+  <!-- Game Showcase -->
+  <section id="games">
+    <h2>🎮 My Roblox Games</h2>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/250x150" width="100%">
+      <h3>Skyborn: Dragon Legacy</h3>
+      <p>Conquer floating islands and rule the skies.</p>
+      <button>Play Soon</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/250x150" width="100%">
+      <h3>Solo Dungeon Slayer</h3>
+      <p>Enter gates. Defeat bosses. Become unstoppable.</p>
+      <button>Play Soon</button>
+    </div>
+  </section>
+
+  <!-- Leaderboard -->
+  <section id="leaderboard">
+    <h2>🏆 Top Players</h2>
+    <table>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Power</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>MoTheGoat7</td>
+        <td>9999</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>ShadowX</td>
+        <td>8700</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>DragonLord</td>
+        <td>8200</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Fake Login -->
+  <section id="login">
+    <h2>💻 Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <br>
+    <button onclick="login()">Login</button>
+    <p id="loginMessage"></p>
+  </section>
 
   <script>
-    function changeText() {
-      document.getElementById("text").innerText =
-        "You unlocked the next level.";
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if(user && pass) {
+        document.getElementById("loginMessage").innerText =
+          "Welcome back, " + user + ". Access granted.";
+      } else {
+        document.getElementById("loginMessage").innerText =
+          "Enter username and password.";
+      }
     }
   </script>
 
