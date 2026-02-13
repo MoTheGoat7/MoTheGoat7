@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: purple;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: violet;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to My Website 👑</h1>
+  <p>This is my first website.</p>
+
+  <button onclick="changeText()">Click Me</button>
+
+  <script>
+    function changeText() {
+      document.querySelector("p").innerText = 
+        "You clicked the button. Now things are happening.";
+    }
+  </script>
+
+</body>
+</html>
